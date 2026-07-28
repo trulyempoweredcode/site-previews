@@ -1,0 +1,340 @@
+/* =============================================
+   THEME: Be Bold Coaching
+   Warm editorial — calm deep teal anchor + vibrant terracotta
+   co-accent + warm cream neutrals + brass fine detail.
+   Font Pairing: Cormorant Garamond + DM Sans
+   ============================================= */
+
+/* --- Google Fonts (Cormorant incl. italic for <em> emphasis) --- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* --- Theme Variables --- */
+:root {
+  /* Anchor: deep teal (calm) */
+  --color-primary: #14756C;
+  --color-primary-light: #4FA89D;
+  --color-primary-dark: #0C4F49;
+
+  /* Co-accent: terracotta / vermilion (from her linen trousers) —
+     drives btn--accent, CTA accents, eyebrows */
+  --color-secondary: #C8502A;
+  --color-secondary-light: #E0855E;
+  --color-secondary-dark: #A23C1C;
+
+  /* Fine detail: brass / antique gold (rules, ticks, flourishes, watermark) */
+  --color-brass: #B08642;
+  --color-brass-light: #CBA968;
+  --color-brass-soft: #D9C39A;
+
+  /* Accent teal pop */
+  --color-accent: #2BA298;
+  --color-accent-light: #79C6BC;
+
+  /* Neutrals: warm cream (kills the green wash) */
+  --color-bg: #FBF7F0;
+  --color-bg-alt: #F3EADC;            /* warm oat — replaces cool duck-egg */
+  --color-bg-dark: #123C39;           /* deep pine teal */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F7EFE3;
+
+  /* Warm-tinted text */
+  --color-text: #322B26;
+  --color-text-light: #6B5F56;
+  --color-text-inverse: #FBF7F0;
+  --color-text-heading: #123C39;
+
+  --color-border: #E4D8C6;
+  --color-border-light: #EFE6D7;
+
+  --color-success: #1F8E80;
+  --color-error: #C0492E;
+
+  /* Duck-egg glass for the transparent homepage nav (CLIENT'S PICK — keep) */
+  --nav-transparent-bg: #91b8b599;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Bigger, fluid display presence (Cormorant is delicate — let it breathe) */
+  --text-h1-desktop: clamp(2.75rem, 5.5vw, 4rem);
+  --text-h2-desktop: clamp(2.1rem, 3.6vw, 2.9rem);
+  --text-h3-desktop: 1.9rem;
+
+  /* Aesthetic dials — elegant editorial */
+  --aesthetic-radius: 10px;
+  --aesthetic-shadow-card:
+      0 1px 2px rgba(60, 40, 24, 0.05),
+      0 10px 30px -8px rgba(60, 40, 24, 0.12);
+  --aesthetic-border-width: 1px;
+}
+
+/* =============================================
+   TYPOGRAPHY REFINEMENTS
+   ============================================= */
+h1, h2 {
+  letter-spacing: -0.01em;
+  font-weight: 600;                  /* 600 reads more elegant in Cormorant than 700 */
+}
+/* Italic-serif emphasis — wrap key words in <em> inside headings */
+h1 em, h2 em, h3 em, .hero__heading em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-secondary-dark);
+}
+.hero--image .hero__heading em { color: var(--color-secondary-light); }  /* legible on dark hero */
+
+/* Eyebrow: tracked small-caps + brass hairline flourish (hits all .section-label) */
+.section-label {
+  position: relative;
+  color: var(--color-secondary-dark);
+  letter-spacing: 0.16em;
+  padding-bottom: 10px;
+}
+.section-label::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 38px; height: 2px;
+  background: linear-gradient(90deg, var(--color-brass), transparent);
+  transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.text-center .section-label::after { left: 50%; transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--color-brass), transparent); }
+.reveal--visible .section-label::after { width: 52px; }
+/* No flourish on pill labels or image page-headers (they have their own bg) */
+.section-label--pill::after,
+.section-label--pill-accent::after,
+.section-label--pill-primary::after,
+.page-header--image .section-label::after { display: none; }
+/* On dark sections the eyebrow goes brass-light for contrast */
+.section--dark .section-label,
+.info-band .section-label { color: var(--color-brass-light); }
+
+/* =============================================
+   PRESERVED CLIENT PICKS / HERO
+   ============================================= */
+/* Keep transparent (homepage) nav text legible over the brighter hero right side */
+.nav--transparent .nav__name,
+.nav--transparent .nav__title,
+.nav--transparent .nav__link {
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.38);
+}
+
+/* Homepage image-left hero: dark left (text) → vibrant right (photo). Desktop only. */
+@media (min-width: 768px) {
+  .hero--image-left::before {
+    background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.62) 0%,
+      rgba(0, 0, 0, 0.5) 38%,
+      rgba(0, 0, 0, 0.22) 64%,
+      rgba(0, 0, 0, 0) 100%);
+  }
+}
+
+/* Footer: light duck-egg ground with dark text (CLIENT'S PICK — keep) */
+.footer {
+  background-color: #92b8b3;
+  color: #2a2a2a;
+}
+.footer__inner { border-bottom-color: rgba(42, 42, 42, 0.2); }
+.footer__brand-name,
+.footer__heading { color: #2a2a2a; }
+.footer__brand-text { color: rgba(42, 42, 42, 0.82); }
+.footer__link,
+.footer__contact-item,
+.footer__contact-item a { color: rgba(42, 42, 42, 0.82); }
+.footer__link:hover,
+.footer__contact-item a:hover { color: #2a2a2a; }
+.footer__contact-item svg { color: #2a2a2a; }   /* pinned neutral (not terracotta on cool teal) */
+.footer__copyright,
+.footer__legal a { color: rgba(42, 42, 42, 0.68); }
+.footer__legal a:hover { color: #2a2a2a; }
+/* Social icons tuned for the light teal footer (default .footer__social is built for dark footers) */
+.footer__social { margin-top: var(--space-md); }
+.footer__social a { background: rgba(42, 42, 42, 0.06); color: #2a2a2a; }
+.footer__social a:hover { background: var(--color-primary); color: #fff; }
+
+/* Fox mark beside the brand wordmark in the nav */
+.nav__logo { max-height: 46px; width: auto; }
+
+/* Warm the cool generated page-header images via a pine→terracotta overlay */
+.page-header--image::before {
+  background: linear-gradient(150deg,
+    rgba(18, 60, 57, 0.64) 0%,
+    rgba(60, 40, 24, 0.5) 55%,
+    rgba(162, 60, 28, 0.42) 100%);
+}
+
+/* =====================================================================
+   ELEVATION LAYER — decorative utilities (site-specific)
+   ===================================================================== */
+
+/* ---- 1. Fox watermark — barely-visible brand mark bleeding off an edge ---- */
+.has-fox { position: relative; overflow: hidden; }
+.has-fox > .container { position: relative; z-index: 1; }
+.fox-watermark {
+  position: absolute;
+  top: 50%;
+  width: clamp(260px, 32vw, 460px);
+  aspect-ratio: 326 / 400;
+  background: url('../images/fox-icon.png') no-repeat center / contain;
+  opacity: 0.06;
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+  filter: sepia(0.35) saturate(1.1) hue-rotate(-12deg);   /* nudge rose-gold → brass */
+}
+.fox-watermark--left { left: -7%; }
+.fox-watermark--right { right: -7%; transform: translateY(-50%) scaleX(-1); }
+.section--dark .fox-watermark,
+.info-band .fox-watermark { opacity: 0.10; }
+@media (max-width: 767px) { .fox-watermark { opacity: 0.04; width: 300px; } }
+
+/* ---- 2. Warm salt-lamp glow + calm teal glow (CSS-only section ambience) ---- */
+.glow-warm, .glow-calm { position: relative; isolation: isolate; }
+.glow-warm::before, .glow-calm::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+}
+.glow-warm::before {
+  background:
+    radial-gradient(40% 55% at 82% 16%, color-mix(in srgb, var(--color-secondary-light) 55%, transparent) 0%, transparent 70%),
+    radial-gradient(45% 50% at 12% 90%, color-mix(in srgb, var(--color-brass-soft) 55%, transparent) 0%, transparent 72%);
+  opacity: 0.55;
+}
+.glow-calm::before {
+  background:
+    radial-gradient(38% 50% at 88% 12%, color-mix(in srgb, var(--color-accent-light) 45%, transparent) 0%, transparent 70%),
+    radial-gradient(42% 48% at 8% 92%, color-mix(in srgb, var(--color-primary-light) 30%, transparent) 0%, transparent 72%);
+  opacity: 0.5;
+}
+
+/* ---- 3. Brass flourish (standalone divider mark) ---- */
+.flourish {
+  display: block; width: 46px; height: 2px;
+  margin: var(--space-md) auto;
+  background: linear-gradient(90deg, transparent, var(--color-brass), transparent);
+}
+
+/* ---- 4. Warm card shadow + hover lift ---- */
+.card--warm,
+.testimonial--card,
+.cta-image {
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px rgba(60,40,24,0.04), 0 14px 34px -12px rgba(60,40,24,0.14);
+  transition: transform 320ms cubic-bezier(0.22,1,0.36,1), box-shadow 320ms cubic-bezier(0.22,1,0.36,1);
+}
+.card--warm:hover,
+.testimonial--card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 2px 4px rgba(60,40,24,0.06), 0 22px 48px -14px rgba(60,40,24,0.2);
+}
+
+/* ---- 5. Brass top-rule accent on cards ---- */
+.card--brass-top { position: relative; overflow: hidden; }
+.card--brass-top::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-brass), var(--color-brass-light));
+}
+
+/* ---- 6. Warm-duotone filter for any cool <img> ---- */
+.warm-duotone { filter: sepia(0.22) saturate(1.15) hue-rotate(-6deg) contrast(1.02); }
+
+/* ---- 7. Brass detailing on existing components ---- */
+/* Subtle checklist ticks → brass */
+.checklist--subtle .checklist__item::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23B08642' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+}
+/* Outcome lists (checklist-grid) → editorial brass-tick rows */
+.checklist-grid .checklist__item {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 14px 2px;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: var(--text-md);
+}
+.checklist-grid .checklist__item::before {
+  content: "\2714";
+  background: none; width: auto; height: auto; margin: 0; border-radius: 0;
+  color: var(--color-brass); font-size: 0.85em; flex-shrink: 0;
+}
+/* Approach-grid numerals → brass medallions */
+.approach-item__number { background-color: var(--color-brass) !important; }
+/* Testimonial stars → warm brass; big pull-quote mark → brass */
+.testimonial__stars svg { fill: var(--color-brass); }
+.blockquote--pull::before { color: color-mix(in srgb, var(--color-brass) 60%, transparent); }
+/* Nav underline → brass */
+.nav__link::after { background-color: var(--color-brass) !important; }
+/* Terracotta CTA buttons: bold for legibility (white text on terracotta) */
+.btn--accent { font-weight: 600; }
+
+/* Step numerals → brass (matches approach-item__number) */
+.step__number { background-color: var(--color-brass) !important; color: #fff !important; }
+
+/* Overlay-card supporting tagline (light on the photo scrim) */
+.overlay-card__content p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--text-sm);
+  margin-top: 6px;
+  line-height: 1.45;
+}
+.overlay-card__cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 12px; font-size: var(--text-sm); font-weight: 600;
+  color: #fff;
+}
+
+/* Terracotta "Be Bold / courage" band */
+.section--terracotta {
+  background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%);
+  color: var(--color-text-inverse);
+}
+.section--terracotta h1, .section--terracotta h2, .section--terracotta h3 { color: var(--color-text-inverse); }
+.section--terracotta p { color: rgba(255, 255, 255, 0.92); }
+.section--terracotta .section-label { color: #fff; }
+.section--terracotta .section-label::after { background: linear-gradient(90deg, var(--color-brass-light), transparent); }
+.section--terracotta .fox-watermark { opacity: 0.10; filter: none; }
+
+/* Dark-section legibility: lighten subtitle + emphasis */
+.section--dark .section-subtitle { color: rgba(255, 255, 255, 0.75); }
+.section--dark h2 em, .section--dark h3 em { color: var(--color-brass-light); }
+
+/* Six-Month Container band: teal-green so it pops (distinct from the pine trust strip + terracotta courage band) */
+.section--six-month { background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: var(--color-text-inverse); }
+.section--six-month h2 { color: var(--color-text-inverse); }
+.section--six-month h2 em { color: var(--color-brass-light); }
+.section--six-month .section-label { color: var(--color-brass-light); }
+.section--six-month .section-subtitle { color: rgba(255, 255, 255, 0.9); }
+.section--six-month .fox-watermark { opacity: 0.10; filter: none; }
+
+/* Guard: full-bleed sections (split--bleed) + off-canvas mobile nav must never
+   cause a horizontal scrollbar. overflow-x: clip doesn't create a scroll
+   container, so sticky/fixed positioning is unaffected. */
+html, body { overflow-x: clip; }
+
+/* Terracotta CTA banner variant (to differentiate repeated teal CTAs) */
+.cta-banner--terracotta { background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-secondary) 100%); }
+
+/* Auto brass top-rule on feature/service cards site-wide (no HTML change) */
+.card--feature, .card--service { position: relative; overflow: hidden; }
+.card--feature::before, .card--service::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-brass), var(--color-brass-light));
+}
+
+
+/* === BACKFILL: rules dropped by template update to v1.7.5 ===
+   2 rule(s) preserved automatically because their classes are
+   still referenced in this site's HTML. Move into proper site partials
+   if you want, but do NOT delete unless you've also removed the markup.
+   ===================================================== */
+
+main > .section:not(.section--alt):not(.section--dark):not(.cta-banner)
+  + .section:not(.section--alt):not(.section--dark):not(.cta-banner) {
+  background-color: var(--color-bg-alt);
+}
+
+main > .section--alt + .section--alt:not(.section--dark):not(.cta-banner) {
+  background-color: var(--color-bg);
+}
+
+/* === END BACKFILL === */

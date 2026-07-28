@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /documents/bebold-coaching-free-guide.pdf
+Allow: /
+
+Sitemap: https://www.be-bold-coaching.com/sitemap.xml

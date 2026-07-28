@@ -1,0 +1,12 @@
+# Local working/source files — not part of the deployed site
+web-use-images/
+website-content/
+design-form-unpacked/
+.claude/
+images.json
+*.code-workspace
+
+# OS / editor
+.DS_Store
+Thumbs.db
+client-brief.md
