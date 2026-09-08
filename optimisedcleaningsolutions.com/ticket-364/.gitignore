@@ -1,0 +1,5 @@
+# Build sources / internal — not part of the published site
+portal-content/
+client-brief.md
+content-checklist.html
+images/_gen/

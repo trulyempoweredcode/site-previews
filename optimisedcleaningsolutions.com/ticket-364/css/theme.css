@@ -1,0 +1,119 @@
+/* =============================================
+   THEME: Optimised Cleaning Solutions
+   Clean, dependable, professional — domestic & commercial cleaning
+   Palette: Navy + Fresh Green (pulled from the brand logo)
+   Font Pairing: Clean & Bold (Montserrat + Source Sans 3)
+   Aesthetic: Soft (base default)
+   ============================================= */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Source+Sans+3:wght@400;500;600&display=swap');
+
+/* --- Theme Variables --- */
+:root {
+  /* Colour Palette — navy anchor + fresh green co-accent, both from the logo,
+     over clean, cool-tinted neutrals (never flat white). */
+  --color-primary: #123A73;         /* deep brand navy — buttons, headings, links */
+  --color-primary-light: #275CA6;
+  --color-primary-dark: #0C2A55;
+
+  --color-secondary: #2C8A2A;       /* brand green — accent buttons / pills (white text safe) */
+  --color-secondary-light: #4FB63C;
+  --color-secondary-dark: #1F6E1C;  /* readable green on white — eyebrows, hovers */
+
+  --color-accent: #1C7C93;          /* clean water-teal — sparing fine detail */
+  --color-accent-light: #2E9BB4;
+
+  --color-bg: #F7FAFC;              /* cool near-white — fresh, clean */
+  --color-bg-alt: #EAF1F6;         /* light cool blue-grey */
+  --color-bg-dark: #0E2A50;        /* deep navy */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F2F7FB;
+
+  --color-text: #2A3644;
+  --color-text-light: #586A7A;
+  --color-text-inverse: #F7FAFC;
+  --color-text-heading: #0F2A52;    /* navy ink */
+
+  --color-border: #D9E3EC;
+  --color-border-light: #E9F0F5;
+
+  --color-success: #2C8A2A;
+  --color-error: #D64545;
+
+  /* Typography */
+  --font-heading: 'Montserrat', 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Heading sizes — clean-bold renders large; tuned down for balance */
+  --text-h1-desktop: 2.5rem;
+  --text-h2-desktop: 2rem;
+  --text-h3-desktop: 1.5rem;
+
+  /* Brand decorative tokens (site-bespoke — not part of the shared library) */
+  --brand-green-bright: #57B72E;    /* the logo's vivid green — decorative only, never text-on-white */
+  --brand-navy-glow: rgba(39, 92, 166, 0.16);
+  --brand-green-glow: rgba(87, 183, 46, 0.16);
+}
+
+/* =============================================
+   Decorative layer (Polish Standard) — small, tasteful brand touches.
+   Site-bespoke helpers only; the component library is untouched.
+   ============================================= */
+
+/* Clean, consistent breathing room between an eyebrow and its heading
+   (base default is a tight 8px, which reads jammed on larger headings). */
+.section-label { margin-bottom: var(--space-md); }
+
+/* Soft radial "clean glow" ambience — opt-in per section via .has-glow */
+.has-glow { position: relative; isolation: isolate; overflow: hidden; }
+.has-glow::before {
+  content: "";
+  position: absolute;
+  inset: auto -10% -40% auto;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--brand-green-glow) 0%, transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Navy hero overlay tuned to the brand for the image hero — fades to a clear
+   right edge so the photography reads through. */
+.hero--image::before,
+.hero--image-left::before,
+.hero--image-right::before {
+  background: linear-gradient(120deg, rgba(9, 30, 62, 0.86) 0%, rgb(12 42 85 / 47%) 55%, rgb(18 58 115 / 0%) 100%);
+}
+
+/* Italic-serif-style emphasis stand-in: brand-green key words in headings */
+.brand-accent-word { color: var(--color-secondary-dark); }
+
+/* Hero tick pills: brand-green check icons for a crisp, on-brand hero moment */
+.hero__ticks svg { color: var(--brand-green-bright); }
+
+/* Trust/feature icon lift — layered brand-tinted shadow */
+.section--alt .card__icon,
+.card__icon { box-shadow: 0 6px 18px var(--brand-navy-glow); }
+
+
+/* === BACKFILL: rules dropped by template update to v1.7.5 ===
+   2 rule(s) preserved automatically because their classes are
+   still referenced in this site's HTML. Move into proper site partials
+   if you want, but do NOT delete unless you've also removed the markup.
+   ===================================================== */
+
+.split__text .btn,
+.split__content .btn {
+  margin-top: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .split--reverse .split__text,
+    .split--reverse .split__content {
+      order: 2;
+    }
+}
+
+/* === END BACKFILL === */
